@@ -15,6 +15,7 @@ import {
   getNotReadyWindowIds,
   getReadyWindowIds,
   getTargetWindowId,
+  isApplicationFocused,
   isWindowClosing,
   isWindowReady,
 } from '@main/services/window-state.service';
@@ -529,7 +530,7 @@ async function findWebViewAdoptedAfterTimeout(
  * focus from another application. A new window raises itself when it is created.
  */
 function raiseMoveTarget(target: MoveWebViewTarget): void {
-  if (typeof target === 'number' && getFocusedWindowId() !== undefined) focusWindow(target);
+  if (typeof target === 'number' && isApplicationFocused()) focusWindow(target);
 }
 
 /**
